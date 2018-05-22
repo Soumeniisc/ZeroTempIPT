@@ -1,0 +1,34 @@
+ module Global
+       implicit none
+       save
+       integer Ndeg,LDA_DMFT,phsym,Norbs,Nm
+       integer NQPTS,Nkp,N_PTS,Ndim
+       integer, parameter :: Nmdos=1000
+       !integer, parameter :: NQPTS=15625
+       !integer, parameter :: Nkp=160
+       real*8, allocatable :: nf(:),n0(:)                       
+       real*8::sum1,sum2,delta1,dfac
+       real*8, allocatable :: U_ab(:,:)
+       complex*16, allocatable:: Ham0(:,:,:)
+       complex*16, allocatable:: Ham_model(:,:,:)      
+       real*8:: LATT_A,mu0,correc,ntot_input,correc2
+       integer :: N,Ndos,idos,init,nloop,Jflag
+       real*8:: U,t,J_H,eta,temp,beta,pi,frac                     
+       real*8, allocatable :: nf_tmp(:),Zfac(:),slope(:)
+       real*8, allocatable ::w(:),dw(:),ferm(:),energy(:)            
+       real*8, allocatable :: chi1(:,:),chi2(:,:)
+       real*8, allocatable::ep_f(:),OrbE(:),ep_fB(:)          
+       real*8:: mu_c,nf_new,ntot,mu_c_guess,alpha,shift,LDA_mu
+       complex*16::ii,zero
+       complex*16, allocatable::Gfscript(:,:),sigma(:,:),sigmaB(:,:),Gf(:,:)
+       complex*16,allocatable::sigma_dyn(:,:)
+       real*8:: ep1,ep2,ep3,ep4,ep5,b1,b2,db2,b3,db3,b4,db4,uj
+       real*8, allocatable:: rr1(:),rr2(:),asym_p(:),epf_ref(:)       
+       complex*16:: z1,z2,z3,z4,z5,z6
+       integer  :: num_tasks,ierr,task_id
+       integer :: jstart,jend,uniform_grid 
+       integer :: sub_lattice
+
+
+      end  module Global
+

@@ -1,0 +1,61 @@
+! it contain subroutine omega(),  function fermic(x,beta)
+
+subroutine omega()
+	!include "global"
+	!its creates uniform frequency grid.
+
+   	use Global
+	integer i
+    double precision beta 
+	
+	beta = 0.d0
+   	binsize=(Wmax-Wmin)/dfloat(nbin)
+	
+   	do i=-nbin/2,nbin/2-1
+      	w(i)=(dfloat(i)+0.5d0)*binsize  
+		fermi(i) =  fermic(w(i),beta)
+    enddo
+	if (benchmark == 1) then
+		print*, "look  at grid and fermi function in grid_fermi.dat file. printed from grid.f90/omega()"
+		open(unit=238,file='grid_fermi.dat',status='unknown')
+		do i=-nbin/2,nbin/2-1
+			write(238,*)i,w(i),fermi(i)
+		end do
+		close(238)
+	end if
+
+end
+
+
+double precision function fermic(x,beta)
+	double precision x,beta
+!	fermi function which avoids underflow/overflow.  If beta=0,
+!	it is assumed that T=0 is meant!
+
+	if(beta.eq.0.0D0) then
+	  if(x.lt.0.0D0) then	  
+	    fermic=1.0D0
+	  else if(x.eq.0.0D0) then
+	    fermic=0.5D0
+	  else
+	    fermic=0.0D0
+	  end if
+	else
+	  if(x.lt.0.0D0) then	  
+	    fermic=1.0D0/(dexp(beta*x)+1.0D0)
+	  else
+	    fermic=dexp(-beta*x)/(dexp(-beta*x)+1.0D0)
+	  end if
+	end if
+	return
+end
+
+! this is a test function to check that function call work fine 
+function area(a,b)
+	real area
+	real, intent(in):: a,b
+	print*, "function test"
+	area =  a*b
+end function area
+
+

@@ -1,0 +1,14 @@
+
+       implicit none
+       save
+       integer nbin
+       parameter(nbin=16000)
+       double precision Wmax, Wmin, binsize
+       double precision	 w(-nbin/2:nbin/2-1)
+       integer  :: num_tasks,ierr,task_id
+       integer :: jstart,jend,uniform_grid 
+       integer :: sub_lattice
+
+
+
+

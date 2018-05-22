@@ -1,0 +1,14 @@
+# always remeber to put one white space between label and data. if you put twice space or tab in between data wouldnt be read
+t: 0.5
+t2: 0.1
+delta: 0.5
+U: 0.25
+mu: 0.125	
+sub_lattice: 0
+eta: 0.001
+MinNoLoop: 2
+MaxNoLoop: 2
+ToleranceDos: 0.0001
+kktransformation: 1
+benchmark: 1
+ToleranceDos: 0.0001
